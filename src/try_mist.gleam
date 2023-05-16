@@ -1,5 +1,8 @@
-import gleam/io
+import gleam/erlang/process
+import handler.{handler}
+import mist
 
 pub fn main() {
-  io.println("Hello from try_mist!")
+  let assert Ok(_) = mist.serve(8080, mist.handler_func(handler))
+  process.sleep_forever()
 }
